@@ -59,3 +59,4 @@ typings/
 
 # webpack'd bundle
 bundle.js*
+public/renew.js*

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
+import { reducer as oidc } from 'redux-oidc'
 
-// Replace blank with your custom reducers
+// Populate this object with your custom reducers
 
 export default combineReducers({
-    blank: (state = {}, action) => state 
+    oidc
 });

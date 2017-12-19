@@ -3,11 +3,28 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 
 import Dummy from './dummy'
+import { userManager } from '../core/auth';
 
 // The true entry point for your application
 class App extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        if (!props.oidc.user) {
+            userManager.signinRedirect();
+        }
+    }
+
     render() {
+        if (!this.props.oidc.user) {
+            return (
+                <div>
+                    Waiting for auth...
+                </div>
+            )
+        }
+
         return (
             <div>
                 <Dummy />
@@ -19,7 +36,7 @@ class App extends React.Component {
 // Get properties out of global state into component
 const mapStateToProps = (state) => {
     return {
-
+        oidc: state.oidc
     }
 }
 
